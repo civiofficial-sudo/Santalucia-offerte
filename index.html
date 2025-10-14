@@ -193,3 +193,206 @@
   </script>
 </body>
 </html>
+<!doctype html>
+<html lang="it">
+
+<body>
+  <div class="wrap">
+    <main class="grid" id="offers">
+
+      <!-- 1 Last Minute -->
+      <article class="card">
+        <img class="media" src="img/lastminute.jpg" alt="Last Minute Santa Lucia">
+        <div class="card-body">
+          <span class="tag">Last Minute</span>
+          <h3>Last Minute — sconto 5%</h3>
+          <div class="meta">Prenota entro 72 ore dal check-in · Tariffa non rimborsabile</div>
+          <p class="desc">Sconto 5% sulla tariffa non rimborsabile per prenotazioni dirette.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51464)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('lastminute')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 Due Notti -->
+      <article class="card">
+        <img class="media" src="img/2notti.jpg" alt="Offerta 2 Notti">
+        <div class="card-body">
+          <span class="tag">2/3 Notti</span>
+          <h3>Soggiorno 2 notti — sconto 5%</h3>
+          <div class="meta">Valida per soggiorni di 2 o 3 notti · Tariffa non rimborsabile</div>
+          <p class="desc">Soggiorna 2 o 3 notti e ottieni il 5% di sconto sulla tariffa non rimborsabile.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51565)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('2notti')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 SPA Day Use -->
+      <article class="card">
+        <img class="media" src="img/spa_dayuse.jpg" alt="SPA Day Use">
+        <div class="card-body">
+          <span class="tag">Day Use</span>
+          <h3>SPA in camera — Day Use</h3>
+          <div class="meta">Check-in dalle 12:00 — Check-out entro le 21:00 · Suite Sole</div>
+          <p class="desc">Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/52197)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('spa_dayuse')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 Pranzo & SPA -->
+      <article class="card">
+        <img class="media" src="img/pranzo_spa.jpg" alt="Pranzo & SPA">
+        <div class="card-body">
+          <span class="tag">Day Use + Pranzo</span>
+          <h3>Pranzo & SPA — Day Use</h3>
+          <div class="meta">1 ora SPA + pranzo 2 portate · Solo Suite Sole</div>
+          <p class="desc">Includes 1 hour Garden SPA access and a 2-course lunch à la carte. Valid all days except Fri & Sat.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/52198)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('pranzo_spa')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 Fuga Romantica -->
+      <article class="card">
+        <img class="media" src="img/fuga_romantica.jpg" alt="Fuga Romantica">
+        <div class="card-body">
+          <span class="tag">Con Pernotto</span>
+          <h3>Fuga Romantica</h3>
+          <div class="meta">Check-in dalle 14:30 · Cena degustazione 5 portate · Check-out ore 11:00</div>
+          <p class="desc">Postazioni bordo piscina, cena "Orto e Territorio" 5 portate, colazione servita al tavolo.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39076)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('fuga_romantica')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 Fuga Romantica con Cena al Braciere -->
+      <article class="card">
+        <img class="media" src="img/fuga_braciere.jpg" alt="Fuga Romantica Cena al Braciere">
+        <div class="card-body">
+          <span class="tag">Speciale</span>
+          <h3>Fuga Romantica — Cena al Braciere</h3>
+          <div class="meta">Check-in dalle 14:30 · Cena al braciere · Colazione inclusa</div>
+          <p class="desc">Cena intima al braciere con menu degustazione 5 portate e colazione servita al tavolo.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39086)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('fuga_braciere')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7 Fuga Benessere & Relax -->
+      <article class="card">
+        <img class="media" src="img/fuga_benessere.jpg" alt="Fuga Benessere & Relax">
+        <div class="card-body">
+          <span class="tag">Benessere</span>
+          <h3>Fuga Benessere & Relax</h3>
+          <div class="meta">Check-in dalle 14:30 · 1 ora SPA · Cena degustazione</div>
+          <p class="desc">Accesso SPA, cena degustazione "Orto e Territorio" 5 portate, colazione servita al tavolo.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39082)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('fuga_benessere')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8 Relax Weekend (no beddy -> WhatsApp) -->
+      <article class="card">
+        <img class="media" src="img/relax_weekend.jpg" alt="Relax Weekend & SPA">
+        <div class="card-body">
+          <span class="tag">Weekend</span>
+          <h3>Relax Weekend — 26 ore</h3>
+          <div class="meta">Check-in sabato 14:30 · Cena 5 portate · Check-out domenica ore 16:00</div>
+          <p class="desc">Cena degustazione, SPA, colazione e check-out prolungato per un weekend rigenerante.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://wa.me/390666190850?text=Salve%20vorrei%20info%20sul%20pacchetto%20Relax%20Weekend" target="_blank" rel="noopener">Prenota WhatsApp</a>
+            <button class="btn btn-ghost" onclick="openModal('relax_weekend')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <div class="contact-row" style="margin-top:22px;justify-content:center">
+      <a class="contact-link" href="tel:+390666190850">📞 06 6619 0850</a>
+      <a class="contact-link" href="mailto:info@santaluciamaccarese.it">✉️ info@santaluciamaccarese.it</a>
+      <a class="contact-link" href="https://www.santaluciamaccarese.it" target="_blank" rel="noopener">🌐 Visita il sito</a>
+    </div>
+
+    <footer>
+      <div>© Santa Lucia Maccarese — Via della Luna, Fregene (RM)</div>
+    </footer>
+  </div>
+
+  <!-- Modali (tutte e 8) -->
+  <div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" onclick="closeModal()" aria-label="Chiudi">×</button>
+      <div id="modal-body">
+        <!-- contenuto inserito dinamicamente -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // dati modali: titolo + descrizione dettagliata (usa i testi del cliente)
+    const DETAILS = {
+      lastminute: {
+        title: 'Last Minute — Sconto 5%',
+        text: '<p>Valida per soggiorni prenotati entro 72 ore dal check-in. Sconto 5% sulla tariffa non rimborsabile. Tutte le camere incluse.</p>'
+      },
+      '2notti': {
+        title: 'Offerta 2/3 Notti',
+        text: '<p>Valida per soggiorni di 2 o 3 notti. Sconto 5% sulla tariffa non rimborsabile per prenotazioni dirette.</p>'
+      },
+      spa_dayuse: {
+        title: 'SPA in camera — Day Use',
+        text: '<p>Check-in dalle 12:00; check-out entro le 21:00. Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora. Solo Suite Sole.</p>'
+      },
+      pranzo_spa: {
+        title: 'Pranzo & SPA — Day Use',
+        text: '<p>Check-in dalle 12:00; check-out entro le 21:00. Accesso SPA per 1 ora + pranzo alla carta 2 portate. Solo Suite Sole. Non disponibile venerdì e sabato.</p>'
+      },
+      fuga_romantica: {
+        title: 'Fuga Romantica',
+        text: '<p>Check-in dalle 14:30; postazioni bordo piscina; cena degustazione "Orto e Territorio" 5 portate; colazione dolce o salata servita al tavolo; check-out ore 11:00.</p>'
+      },
+      fuga_braciere: {
+        title: 'Fuga Romantica — Cena al Braciere',
+        text: '<p>Check-in dalle 14:30; cena intima al braciere con menu degustazione 5 portate; colazione servita al tavolo; check-out ore 11:00.</p>'
+      },
+      fuga_benessere: {
+        title: 'Fuga Benessere & Relax',
+        text: '<p>Check-in dalle 14:30; accesso Garden SPA per 1 ora; cena degustazione 5 portate; colazione servita al tavolo; check-out ore 11:00.</p>'
+      },
+      relax_weekend: {
+        title: 'Relax Weekend — 26 ore',
+        text: '<p>Check-in sabato dalle 14:30; cena degustazione 5 portate; accesso SPA; colazione; check-out domenica ore 16:00.</p>'
+      }
+    };
+
+    function openModal(key){
+      const data = DETAILS[key];
+      if(!data) return;
+      const body = document.getElementById('modal-body');
+      body.innerHTML = '<h4 id=\"modal-title\">' + data.title + '</h4>' + data.text + '<div style=\"margin-top:12px;text-align:right\"><button class=\"btn btn-primary\" style=\"padding:8px 12px;border-radius:8px\" onclick=\"closeModal()\">Chiudi</button></div>';
+      document.getElementById('modal').classList.add('show');
+      // accessibility focus
+      body.querySelector('button')?.focus();
+    }
+    function closeModal(){
+      document.getElementById('modal').classList.remove('show');
+      document.getElementById('modal-body').innerHTML = '';
+    }
+  </script>
+</body>
+</html>
