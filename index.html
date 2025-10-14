@@ -1,304 +1,202 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Santa Lucia — Offerte & Pacchetti</title>
-  <meta name="description" content="Pacchetti esclusivi Santa Lucia Maccarese: Day Use, Weekend, Romanticismo e offerte last minute. Prenota direttamente dal sito per ottenere i vantaggi migliori.">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offerte - Santa Lucia Maccarese</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #fafafa;
-      --card-bg: #ffffff;
-      --text-main: #222;
-      --text-muted: #777;
-      --accent: #2b7a78;
-      --accent-dark: #225e5d;
-      --radius: 12px;
-      --shadow: 0 4px 14px rgba(0,0,0,0.06);
-      --maxw: 1000px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: var(--bg);
-      color: var(--text-main);
-      font-family: "Inter", sans-serif;
-      line-height: 1.5;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
     }
-    .wrap { width: 100%; max-width: var(--maxw); }
-
-    /* Header */
     header {
+      background-color: white;
       text-align: center;
-      margin-bottom: 32px;
+      padding: 1.5rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .logo {
-      display: block;
-      margin: 0 auto 12px;
-      width: 120px;
-      height: auto;
-      transition: transform .2s ease;
+    header img {
+      width: 220px;
+      cursor: pointer;
     }
-    .logo:hover { transform: scale(1.05); }
     h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 28px;
-      color: var(--accent-dark);
-      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-top: 1rem;
+      color: #7b6a58;
     }
-    p.lead {
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-
-    /* Grid */
-    .grid {
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
       display: grid;
-      gap: 24px;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
     }
-    @media(min-width: 720px) { .grid { grid-template-columns: repeat(2,1fr); } }
-
-    /* Cards */
     .card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .card:hover { transform: translateY(-4px); }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
     .card img {
       width: 100%;
-      height: 180px;
+      height: 220px;
       object-fit: cover;
     }
-    .card-body {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    .card-content {
+      padding: 1.5rem;
     }
-    .tag {
-      font-size: 13px;
-      color: var(--accent-dark);
-      background: rgba(43,122,120,0.12);
-      padding: 4px 8px;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 8px;
+    .card-content h2 {
+      font-family: 'Playfair Display', serif;
+      color: #6b5a45;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
     }
-    .card-body h3 {
-      margin-bottom: 8px;
-      font-family: "Playfair Display", serif;
-      font-size: 20px;
-      color: var(--accent-dark);
-    }
-    .meta {
-      color: var(--text-muted);
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-    .desc {
-      flex: 1;
-      font-size: 14px;
-      color: var(--text-main);
-      margin-bottom: 12px;
-    }
-    .card-footer {
-      display: flex;
-      gap: 10px;
+    .card-content p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1.2rem;
     }
     .btn {
+      display: inline-block;
+      background-color: #7b6a58;
+      color: white;
       text-decoration: none;
-      font-size: 14px;
+      padding: 0.6rem 1.3rem;
+      border-radius: 30px;
       font-weight: 600;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: background 0.25s ease, color 0.25s ease;
-      text-align: center;
+      transition: background 0.3s ease;
     }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-dark); }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid #ccc;
-      color: var(--text-main);
+    .btn:hover {
+      background-color: #a28c73;
     }
-
-    /* Footer */
     footer {
-      margin-top: 40px;
+      background-color: #f4f0ec;
       text-align: center;
-      font-size: 13px;
-      color: var(--text-muted);
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      border-top: 1px solid #e2ddd8;
     }
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      z-index: 100;
+    footer p {
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
     }
-    .modal-content {
-      background: #fff;
-      border-radius: var(--radius);
-      max-width: 600px;
-      width: 100%;
-      padding: 24px;
-      position: relative;
-      font-size: 15px;
-      box-shadow: var(--shadow);
-    }
-    .modal-content h3 {
-      margin-bottom: 12px;
-      font-family: "Playfair Display", serif;
-    }
-    .modal-content p { margin-bottom: 8px; color: var(--text-main); }
-    .close-btn {
-      position: absolute;
-      top: 10px; right: 12px;
-      background: none;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      color: var(--accent-dark);
-    }
-    .contacts {
-      text-align: center;
-      margin-top: 24px;
-    }
-    .contacts a {
-      margin: 0 8px;
-      text-decoration: none;
+    footer a {
+      color: #7b6a58;
       font-weight: 600;
-      color: var(--accent-dark);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <a href="https://www.santaluciamaccarese.it" target="_blank">
-        <img src="img/logo.png" alt="Logo Santa Lucia" class="logo" />
-      </a>
-      <h1>Offerte & Pacchetti — Santa Lucia</h1>
-      <p class="lead">Scopri le nostre proposte esclusive e prenota direttamente dal sito per i migliori vantaggi.</p>
-    </header>
+  <header>
+    <a href="https://www.santaluciamaccarese.it/" target="_blank">
+      <img src="https://www.santaluciamaccarese.it/wp-content/uploads/2021/03/santa-lucia-logo-1.png" alt="Santa Lucia Maccarese Logo">
+    </a>
+    <h1>Offerte Esclusive Santa Lucia</h1>
+  </header>
 
-    <main class="grid">
-
-      <!-- Esempio card completa -->
-      <div class="card">
-        <img src="img/lastminute.jpg" alt="Last Minute Santa Lucia">
-        <div class="card-body">
-          <span class="tag">Last Minute</span>
-          <h3>Last Minute — Sconto 5%</h3>
-          <div class="meta">Prenota entro 72 ore dal check-in · Tariffa non rimborsabile</div>
-          <p class="desc">Approfitta dell’offerta last minute e ottieni uno sconto del 5% prenotando direttamente dal nostro sito.</p>
-          <div class="card-footer">
-            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" target="_blank">Prenota ora</a>
-            <a class="btn btn-ghost" href="#" onclick="openModal('lastminute')">Dettagli</a>
-          </div>
-        </div>
+  <main>
+    <!-- Pacchetto 1 -->
+    <div class="card">
+      <img src="img/lastminute.jpg" alt="Offerta Last Minute">
+      <div class="card-content">
+        <h2>Last Minute</h2>
+        <p>Approfitta dell’offerta riservata a chi prenota entro 72 ore dal check-in. Tutte le camere, sconto 5% su tariffa non rimborsabile.</p>
+        <a href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" class="btn" target="_blank">Dettagli</a>
       </div>
+    </div>
 
-      <div class="card">
-        <img src="img/2notti.jpg" alt="Offerta 2 Notti">
-        <div class="card-body">
-          <span class="tag">2 o 3 notti</span>
-          <h3>Soggiorno 2 notti — Sconto 5%</h3>
-          <div class="meta">Tutte le camere · Tariffa non rimborsabile</div>
-          <p class="desc">Prenota 2 o 3 notti e ottieni il 5% di sconto sulla tariffa non rimborsabile.</p>
-          <div class="card-footer">
-            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/P9jerM5a3yMvaJdq?lang=it" target="_blank">Prenota</a>
-            <a class="btn btn-ghost" href="#" onclick="openModal('2notti')">Dettagli</a>
-          </div>
-        </div>
+    <!-- Pacchetto 2 -->
+    <div class="card">
+      <img src="img/2notti.jpg" alt="Soggiorno 2 Notti">
+      <div class="card-content">
+        <h2>2 Notti</h2>
+        <p>Soggiorna 2 o 3 notti e ricevi il 5% di sconto sulla tariffa non rimborsabile. Tutte le camere incluse, offerta valida tutti i giorni.</p>
+        <a href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" class="btn" target="_blank">Dettagli</a>
       </div>
+    </div>
 
-      <div class="card">
-        <img src="img/spa_dayuse.jpg" alt="SPA Day Use">
-        <div class="card-body">
-          <span class="tag">Day Use SPA</span>
-          <h3>SPA in camera — Day Use</h3>
-          <div class="meta">Suite Sole · Tutti i giorni tranne ven/sab</div>
-          <p class="desc">Check-in dalle 12 alle 21 con accesso esclusivo alla Garden SPA per un’ora.</p>
-          <div class="card-footer">
-            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" target="_blank">Vedi offerta</a>
-            <a class="btn btn-ghost" href="#" onclick="openModal('spa_dayuse')">Dettagli</a>
-          </div>
-        </div>
+    <!-- Pacchetto 3 -->
+    <div class="card">
+      <img src="img/spa_dayuse.jpg" alt="SPA in Camera Day Use">
+      <div class="card-content">
+        <h2>SPA in Camera - Day Use</h2>
+        <p>Check-in dalle 12 alle 21, 1 ora di accesso esclusivo alla Garden SPA con tinozza finlandese, sauna e bagno turco. Solo Suite Sole.</p>
+        <a href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" class="btn" target="_blank">Dettagli</a>
       </div>
-
-      <!-- aggiungi qui le altre card con stessi link Beddy -->
-      <!-- ... (uguale logica per tutte le offerte) ... -->
-
-    </main>
-
-    <div class="contacts">
-      <a href="tel:+39068540230">Chiama</a> · 
-      <a href="mailto:info@santaluciamaccarese.it">Email</a> · 
-      <a href="https://www.santaluciamaccarese.it" target="_blank">Visita il sito</a>
     </div>
 
-    <footer>
-      <div>© Santa Lucia Maccarese | Via della Luna, Fregene (RM)</div>
-    </footer>
-  </div>
-
-  <!-- Modali -->
-  <div class="modal" id="modal-lastminute">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <h3>Offerta Last Minute</h3>
-      <p>Valida per soggiorni prenotati entro 72 ore dal check-in.</p>
-      <p>Sconto 5% sulla tariffa non rimborsabile. Tutte le camere incluse.</p>
+    <!-- Pacchetto 4 -->
+    <div class="card">
+      <img src="img/pranzo_spa.jpg" alt="Pranzo e SPA">
+      <div class="card-content">
+        <h2>Pranzo & SPA - Day Use</h2>
+        <p>Check-in 12:00, check-out 21:00, accesso alla Garden SPA per un’ora e pranzo alla carta (2 portate). Solo Suite Sole.</p>
+        <a href="https://share.beddy.io/share/rateplan/P9jerM5a3yMvaJdq?lang=it" class="btn" target="_blank">Dettagli</a>
+      </div>
     </div>
-  </div>
 
-  <div class="modal" id="modal-2notti">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <h3>Offerta 2 Notti</h3>
-      <p>Valida per soggiorni di 2 o 3 notti.</p>
-      <p>Sconto 5% sulla tariffa non rimborsabile. Tutte le camere incluse.</p>
+    <!-- Pacchetto 5 -->
+    <div class="card">
+      <img src="img/fuga_romantica.jpg" alt="Fuga Romantica">
+      <div class="card-content">
+        <h2>Fuga Romantica</h2>
+        <p>Check-in dalle 14:30, cena degustazione 5 portate, colazione servita al tavolo e relax bordo piscina.</p>
+        <a href="https://share.beddy.io/share/rateplan/bxWV5G1XD6QALdJw?lang=it" class="btn" target="_blank">Dettagli</a>
+      </div>
     </div>
-  </div>
 
-  <div class="modal" id="modal-spa_dayuse">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <h3>SPA in camera — Day Use</h3>
-      <p>Check-in dalle 12:00, check-out entro le 21:00.</p>
-      <p>Accesso esclusivo alla Garden SPA (tinozza, sauna, bagno turco) per 1 ora.</p>
+    <!-- Pacchetto 6 -->
+    <div class="card">
+      <img src="img/fuga_braciere.jpg" alt="Fuga Romantica con Cena al Braciere">
+      <div class="card-content">
+        <h2>Fuga Romantica con Cena al Braciere</h2>
+        <p>Check-in 14:30, cena romantica al braciere con menu degustazione 5 portate e colazione servita al tavolo.</p>
+        <a href="https://wa.me/390666190850?text=Salve!%20Vorrei%20informazioni%20sul%20pacchetto%20Fuga%20Romantica%20con%20Cena%20al%20Braciere." class="btn" target="_blank">Dettagli</a>
+      </div>
     </div>
-  </div>
 
-  <script>
-    function openModal(id){
-      document.getElementById('modal-' + id).style.display = 'flex';
-    }
-    function closeModal(){
-      document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-    }
-    window.onclick = function(e){
-      if(e.target.classList.contains('modal')) closeModal();
-    }
-  </script>
+    <!-- Pacchetto 7 -->
+    <div class="card">
+      <img src="img/fuga_benessere.jpg" alt="Fuga Benessere & Relax">
+      <div class="card-content">
+        <h2>Fuga Benessere & Relax</h2>
+        <p>Check-in 14:30, 1 ora di Garden SPA, cena degustazione 5 portate e colazione servita al tavolo. Un giorno di puro relax.</p>
+        <a href="https://wa.me/390666190850?text=Salve!%20Vorrei%20informazioni%20sul%20pacchetto%20Fuga%20Benessere%20e%20Relax." class="btn" target="_blank">Dettagli</a>
+      </div>
+    </div>
+
+    <!-- Pacchetto 8 -->
+    <div class="card">
+      <img src="img/relax_weekend.jpg" alt="Relax Week End & SPA">
+      <div class="card-content">
+        <h2>Relax Week End & SPA</h2>
+        <p>Check-in sabato 14:30, cena degustazione 5 portate, 1 ora di SPA, colazione e late check-out domenica alle 16:00.</p>
+        <a href="https://wa.me/390666190850?text=Salve!%20Vorrei%20informazioni%20sul%20pacchetto%20Relax%20Week%20End%20e%20SPA." class="btn" target="_blank">Dettagli</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>📍 Via di Castel San Giorgio, 9 – Maccarese (RM)</p>
+    <p>📞 <a href="tel:+390666190850">06 6619 0850</a> |
+       ✉️ <a href="mailto:info@santaluciamaccarese.it">info@santaluciamaccarese.it</a> |
+       🌐 <a href="https://www.santaluciamaccarese.it/" target="_blank">Visita il sito</a></p>
+    <p>© 2025 Santa Lucia Maccarese – Tutti i diritti riservati</p>
+  </footer>
 </body>
 </html>
