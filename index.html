@@ -11,39 +11,43 @@
 
   <style>
     :root {
-      --bg: #fdfcfb;
+      --bg: #fefdfc;
       --card: #ffffff;
-      --muted: #666666;
-      --accent: #00827f;
-      --accent-dark: #00594c;
+      --muted: #555555;
+      --accent: #00756e;
+      --accent-dark: #004d46;
       --radius: 12px;
-      --shadow: 0 6px 18px rgba(18,22,23,0.06);
+      --shadow: 0 6px 18px rgba(0,0,0,0.06);
       --maxw: 1100px;
+      --gradient-bg: linear-gradient(180deg, #fefdfc, #f6f7f8);
     }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: var(--bg);
+      background: var(--gradient-bg);
       color: #111;
       display: flex;
       justify-content: center;
       padding: 28px 16px;
     }
     .wrap { width: 100%; max-width: var(--maxw); }
+
     header { text-align: center; margin-bottom: 28px; }
-    .logo { width: 150px; height: auto; margin: 0 auto 10px; display: block; }
+    .logo { width: 160px; height: auto; margin: 0 auto 10px; display: block; }
+
     h1 {
       font-family: 'Playfair Display', serif;
       color: var(--accent-dark);
-      font-size: 28px;
+      font-size: 30px;
       margin: 10px 0 6px;
       letter-spacing: 0.5px;
     }
     p.lead {
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.6;
       max-width: 700px;
       margin: 0 auto 16px;
     }
@@ -51,12 +55,16 @@
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 20px 24px;
-      margin: 0 auto 26px;
+      padding: 24px 28px;
+      margin: 0 auto 30px;
       max-width: 780px;
     }
 
-    main.grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+    main.grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1fr;
+    }
     @media(min-width:760px){ main.grid { grid-template-columns: repeat(2,1fr); } }
 
     .card {
@@ -69,18 +77,20 @@
       transition: transform .22s ease;
     }
     .card:hover { transform: translateY(-6px); }
-    .card .media { width: 100%; height: 220px; object-fit: cover; display: block; }
-    .card-body { padding: 14px 16px; display: flex; flex-direction: column; flex: 1; }
+    .card .media { width: 100%; height: 220px; object-fit: cover; display: block; border-bottom: 1px solid #eee; }
+    .card-body { padding: 16px 18px; display: flex; flex-direction: column; flex: 1; }
+
     .tag {
       display: inline-block;
-      background: rgba(0,130,127,0.12);
+      background: rgba(0,117,110,0.12);
       color: var(--accent-dark);
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
       font-weight: 600;
       font-size: 13px;
       margin-bottom: 8px;
     }
+
     .alert-weekend {
       background: #f8d7da;
       color: #842029;
@@ -91,6 +101,7 @@
       font-weight: 600;
       text-align: center;
     }
+
     .card h3 {
       font-family: 'Playfair Display', serif;
       margin: 6px 0;
@@ -98,27 +109,29 @@
       color: var(--accent-dark);
     }
     .meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
-    .desc { flex: 1; color: #222; font-size: 14px; line-height: 1.46; margin-bottom: 12px; }
+    .desc { flex: 1; color: #222; font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
     .card-footer { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 9px 12px; border-radius: 10px; text-decoration: none;
+      padding: 9px 14px; border-radius: 10px; text-decoration: none;
       font-weight: 700; font-size: 14px; border: 0; cursor: pointer;
     }
     .btn-primary { background: var(--accent); color: #fff; }
     .btn-primary:hover { background: var(--accent-dark); }
     .btn-ghost { background: transparent; border: 1px solid #e6e6e6; color: var(--accent-dark); }
-    footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: 14px; }
+
+    footer { margin-top: 40px; text-align: center; color: var(--muted); font-size: 14px; }
 
     /* modal */
     .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 120; }
     .modal.show { display: flex; }
-    .modal-card { background: #fff; border-radius: 12px; max-width: 720px; width: 100%; padding: 22px; box-shadow: var(--shadow); position: relative; }
+    .modal-card { background: #fff; border-radius: 12px; max-width: 720px; width: 100%; padding: 24px; box-shadow: var(--shadow); position: relative; }
     .modal-card h4 { margin: 0 0 8px; font-family: 'Playfair Display', serif; }
     .modal-close { position: absolute; right: 12px; top: 10px; border: none; background: none; font-size: 22px; cursor: pointer; color: var(--accent-dark); }
 
     /* contact row */
-    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }
+    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 28px; }
     .contact-link {
       background: #fff;
       border: 1px solid #eee;
@@ -153,6 +166,7 @@
     </header>
 
     <main class="grid" id="offers">
+
       <!-- 1 Last Minute -->
       <article class="card">
         <img class="media" src="img/lastminute.jpg" alt="Last Minute Santa Lucia">
@@ -168,9 +182,97 @@
         </div>
       </article>
 
-      <!-- ... altre card qui (copiate dal tuo file originale) ... -->
+      <!-- 2 Due Notti -->
+      <article class="card">
+        <img class="media" src="img/2notti.jpg" alt="Offerta 2 Notti">
+        <div class="card-body">
+          <span class="tag">2/3 Notti</span>
+          <h3>Soggiorno 2 notti — sconto 5%</h3>
+          <div class="meta">Valida per soggiorni di 2 o 3 notti · Tariffa non rimborsabile</div>
+          <p class="desc">Soggiorna 2 o 3 notti e ottieni il 5% di sconto sulla tariffa non rimborsabile.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51565)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('2notti')">Dettagli</button>
+          </div>
+        </div>
+      </article>
 
-      <!-- 8 Relax Weekend (alert aggiunto) -->
+      <!-- 3 SPA Day Use -->
+      <article class="card">
+        <img class="media" src="img/spa_dayuse.jpg" alt="SPA Day Use">
+        <div class="card-body">
+          <span class="tag">Day Use</span>
+          <h3>SPA in camera — Day Use</h3>
+          <div class="meta">Check-in dalle 12:00 — Check-out entro le 21:00 · Suite Sole</div>
+          <p class="desc">Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/52197)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('spa_dayuse')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 Pranzo & SPA -->
+      <article class="card">
+        <img class="media" src="img/pranzo_spa.jpg" alt="Pranzo & SPA">
+        <div class="card-body">
+          <span class="tag">Day Use + Pranzo</span>
+          <h3>Pranzo & SPA — Day Use</h3>
+          <div class="meta">1 ora SPA + pranzo 2 portate · Solo Suite Sole</div>
+          <p class="desc">Accesso SPA per 1 ora e pranzo alla carta 2 portate. Solo Suite Sole. Non disponibile ven & sab.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/52198)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('pranzo_spa')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 Fuga Romantica -->
+      <article class="card">
+        <img class="media" src="img/fuga_romantica.jpg" alt="Fuga Romantica">
+        <div class="card-body">
+          <span class="tag">Con Pernotto</span>
+          <h3>Fuga Romantica</h3>
+          <div class="meta">Check-in dalle 14:30 · Cena degustazione 5 portate · Check-out ore 11:00</div>
+          <p class="desc">Postazioni bordo piscina, cena "Orto e Territorio" 5 portate, colazione servita al tavolo.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39076)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('fuga_romantica')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 Fuga Romantica con Cena al Braciere -->
+      <article class="card">
+        <img class="media" src="img/fuga_braciere.jpg" alt="Fuga Romantica Cena al Braciere">
+        <div class="card-body">
+          <span class="tag">Speciale</span>
+          <h3>Fuga Romantica — Cena al Braciere</h3>
+          <div class="meta">Check-in dalle 14:30 · Cena al braciere · Colazione inclusa</div>
+          <p class="desc">Cena intima al braciere con menu degustazione 5 portate e colazione servita al tavolo.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39086)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('fuga_braciere')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7 Fuga Benessere & Relax -->
+      <article class="card">
+        <img class="media" src="img/fuga_benessere.jpg" alt="Fuga Benessere & Relax">
+        <div class="card-body">
+          <span class="tag">Benessere</span>
+          <h3>Fuga Benessere & Relax</h3>
+          <div class="meta">Check-in dalle 14:30 · 1 ora SPA · Cena degustazione</div>
+          <p class="desc">Accesso SPA, cena degustazione "Orto e Territorio" 5 portate, colazione servita al tavolo.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51498)" target="_blank" rel="noopener">Prenota</a>
+            <button class="btn btn-ghost" onclick="openModal('fuga_benessere')">Dettagli</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8 Relax Weekend -->
       <article class="card">
         <img class="media" src="img/relax_weekend.jpg" alt="Relax Weekend & SPA">
         <div class="card-body">
@@ -185,6 +287,7 @@
           </div>
         </div>
       </article>
+
     </main>
 
     <div class="contact-row">
