@@ -3,128 +3,321 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Santa Lucia - Offerte & Pacchetti</title>
-  <meta name="description" content="Offerte e pacchetti esclusivi del Santa Lucia. Prenota direttamente dal sito e approfitta di sconti, day‑use, SPA e pacchetti con pernottamento.">
+  <title>Santa Lucia — Offerte & Pacchetti</title>
+  <meta name="description" content="Pacchetti esclusivi del Santa Lucia: Day Use SPA, Fuga Romantica, Last Minute e altri. Prenota direttamente dal sito.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{--accent:#2b7a78;--muted:#6b6b6b;--bg:#ffffff}
+    :root{
+      --bg: #fbfbfb;
+      --card: #ffffff;
+      --muted: #6b6b70;
+      --accent: #2b7a78; /* colore base 'Santa Lucia' */
+      --accent-dark: #225e5d;
+      --shadow: 0 6px 18px rgba(18,22,23,0.06);
+      --radius: 14px;
+      --container: 1080px;
+    }
     *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;margin:0;background:var(--bg);color:#111}
-    .container{max-width:900px;margin:24px auto;padding:20px}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#fbfbfb 0%, #f6f7f8 100%);
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px 16px;
+      display:flex;
+      justify-content:center;
+    }
 
-    header{display:flex;gap:16px;align-items:center}
-    .logo{width:72px;height:72px;background:#eee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#999}
-    h1{margin:0;font-size:20px}
-    p.lead{color:var(--muted);margin:6px 0 18px}
+    .wrap{width:100%;max-width:var(--container);}
 
-    .grid{display:grid;grid-template-columns:1fr;gap:14px}
-    .card{border-radius:12px;padding:14px;border:1px solid #eee;background:#fafafa}
-    .card h3{margin:0 0 6px}
-    .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-bottom:22px;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      width:84px;height:84px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+      color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:"Playfair Display",serif;font-size:22px;
+      box-shadow:var(--shadow);
+    }
+    h1{margin:0;font-family:"Playfair Display",serif;font-size:28px;line-height:1;color:#0f2a29}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:15px}
 
-    .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
-    .btn-primary{background:var(--accent);color:#fff}
-    .btn-ghost{background:transparent;border:1px solid #ddd;color:#111}
+    .hero{
+      margin:18px 0 26px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      align-items:center;
+    }
 
-    footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+    .grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns:1fr;
+    }
+    @media(min-width:880px){
+      .hero{grid-template-columns:1fr 360px}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(min-width:1200px){
+      .grid{grid-template-columns:repeat(3,1fr)}
+    }
 
-    @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:320px;
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+    .card:hover{transform:translateY(-6px)}
+    .card img{width:100%;height:180px;object-fit:cover;display:block}
+    .card-body{padding:14px 16px 18px;display:flex;flex-direction:column;flex:1}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(43,122,120,0.12);color:var(--accent-dark);font-weight:600;font-size:13px;margin-bottom:8px}
+    .card h3{margin:4px 0 6px;font-size:18px;font-family:"Playfair Display",serif}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:10px}
+    .desc{flex:1;color:#222;font-size:14px;line-height:1.45}
+    .card-footer{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;border:1px solid transparent;
+    }
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 14px rgba(43,122,120,0.12)}
+    .btn-ghost{background:transparent;border:1px solid #e6e6e6;color:#111}
+    .small{font-size:13px;color:var(--muted)}
+    footer{margin-top:26px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* search / quick actions (hero right) */
+    .panel{
+      background:var(--card);
+      border-radius:14px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    .panel h4{margin:0 0 8px;font-size:16px}
+    .social{
+      display:flex;gap:8px;margin-top:8px;
+    }
+    .social a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid #eee;text-decoration:none;color:var(--muted)}
+    .note{font-size:13px;color:var(--muted);margin-top:12px}
+
+    /* responsive tweaks */
+    @media(max-width:520px){
+      .logo{width:64px;height:64px}
+      .card img{height:150px}
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
     <header>
-      <div class="logo">SL</div>
-      <div>
-        <h1>Santa Lucia — Offerte & Pacchetti</h1>
-        <p class="lead">Pagina ufficiale per le promozioni: condividi questo link in bio su Instagram per rimandare alle offerte.</p>
+      <div class="brand">
+        <div class="logo">SL</div>
+        <div>
+          <h1>Santa Lucia — Offerte & Pacchetti</h1>
+          <p class="lead">Prenota direttamente dal sito e approfitta di sconti e pacchetti esclusivi. Condividi questo link nella bio di Instagram.</p>
+        </div>
       </div>
     </header>
 
-    <main class="grid">
-      <section class="card">
-        <h3>Last Minute</h3>
-        <div class="meta">Attiva per prenotazioni entro 72 ore dal check-in • Tariffa: non rimborsabile</div>
-        <p>Sconto 5% sulla tariffa non rimborsabile. Valida tutti i giorni, tutte le camere.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#prenota-lastminute">Prenota ora</a>
-          <a class="btn btn-ghost" href="#info">Info</a>
-        </div>
-      </section>
+    <div class="hero">
+      <div class="panel">
+        <h4>Offerte attive per chi prenota dal sito</h4>
+        <p class="small">Qui trovi tutte le promozioni: Last Minute, Day Use SPA, pacchetti romantici e weekend relax. Ogni pacchetto ha il suo link diretto per prenotare.</p>
 
-      <section class="card">
-        <h3>2 notti (Offerta)</h3>
-        <div class="meta">Valida per soggiorni di 2 o 3 notti • Tariffa: non rimborsabile</div>
-        <p>Sconto 5% sulla tariffa non rimborsabile. Valida tutti i giorni per tutte le camere.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#prenota-2notti">Prenota</a>
-          <a class="btn btn-ghost" href="#info">Info</a>
+        <div style="margin-top:12px">
+          <div class="small"><strong>Consiglio rapido</strong></div>
+          <ul style="margin:8px 0 0 18px;color:var(--muted);font-size:13px">
+            <li>Usa immagini orizzontali (16:9) per un risultato uniforme.</li>
+            <li>Ottimizza le foto sotto i 300 KB per caricamento veloce.</li>
+          </ul>
         </div>
-      </section>
 
-      <section class="card">
-        <h3>SPA in CAMERA — DAY USE</h3>
-        <div class="meta">Check‑in dalle 12 — Check‑out entro le 21 • Esclusivo Suite Sole</div>
-        <p>Accesso Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora. Disponibile tutti i giorni tranne ven/sab.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" target="_blank" rel="noopener">Vedi offerta</a>
+        <div style="margin-top:14px">
+          <div class="small"><strong>Link rapido</strong></div>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" target="_blank" rel="noopener">SPA Day Use</a>
+            <a class="btn btn-ghost" href="https://share.beddy.io/share/rateplan/P9jerM5a3yMvaJdq?lang=it" target="_blank" rel="noopener">Pranzo & SPA</a>
+          </div>
         </div>
-      </section>
 
-      <section class="card">
-        <h3>PRANZO & SPA con CAMERA IN DAY USE</h3>
-        <div class="meta">Check‑in dalle 12 — Check‑out entro le 21 • Solo Suite Sole</div>
-        <p>1 ora Garden SPA + pranzo alla carta 2 portate. Non disponibile ven/sab.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/P9jerM5a3yMvaJdq?lang=it" target="_blank" rel="noopener">Vedi offerta</a>
-        </div>
-      </section>
+        <div class="note">Metti questo URL nella bio di Instagram: <strong id="myLink">https://TUO_USERNAME.github.io/santalucia-offerte/</strong></div>
 
-      <section class="card">
-        <h3>Fuga Romantica</h3>
-        <div class="meta">Check‑in dalle 14:30 • Cena degustazione 5 portate • Check‑out ore 11:00</div>
-        <p>Postazioni bordo piscina, cena degustazione, colazione servita. Pacchetto per coppie.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/bxWV5G1XD6QALdJw?lang=it" target="_blank" rel="noopener">Prenota Fuga Romantica</a>
+        <div style="margin-top:12px">
+          <div class="small">Condividi il link nelle stories o usa “Link in bio” per portare traffico diretto alle offerte.</div>
         </div>
-      </section>
+      </div>
 
-      <section class="card">
-        <h3>Fuga Romantica con Cena al Braciere</h3>
-        <div class="meta">Check‑in dalle 14:30 • Cena intima al braciere • Check‑out ore 11:00</div>
-        <p>Cena romantica, colazione e pernottamento. Perfetto per una serata speciale.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#">Richiedi info</a>
+      <div class="panel" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <h4>Contatti</h4>
+          <div class="small" style="margin-top:6px">Telefono: +39 000 000000</div>
+          <div class="small" style="margin-top:4px">Email: <a href="mailto:info@santalucia.example">info@santalucia.example</a></div>
         </div>
-      </section>
 
-      <section class="card">
-        <h3>Fuga Benessere & Relax</h3>
-        <div class="meta">Check‑in dalle 14:30 • 1 ora Garden SPA • Cena degustazione</div>
-        <p>Un giorno per rigenerarsi: SPA, cena degustazione e colazione inclusa.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#">Prenota</a>
+        <div style="margin-top:8px">
+          <h4 style="margin-top:12px">Social</h4>
+          <div class="social" aria-hidden="true">
+            <a title="Instagram" href="#" aria-label="Instagram">IG</a>
+            <a title="Facebook" href="#" aria-label="Facebook">FB</a>
+            <a title="WhatsApp" href="#" aria-label="WhatsApp">WA</a>
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <section class="card">
-        <h3>Relax Weekend & SPA — 26 ore</h3>
-        <div class="meta">Disponibile dal 9 novembre • Check‑in sabato 14:30 • Check‑out domenica 16:00</div>
-        <p>Cena 5 portate, accesso SPA, colazione e check‑out prolungato fino alle 16:00.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#">Prenota Weekend</a>
+    <main class="grid" id="offers">
+
+      <!-- Card 1: Last Minute -->
+      <article class="card">
+        <img src="img/lastminute.jpg" alt="Offerta Last Minute - Santa Lucia" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Last Minute</span>
+          <h3>Last Minute — sconto 5%</h3>
+          <div class="meta">Valida per prenotazioni entro 72 ore dal check-in • Tariffa non rimborsabile • Tutte le camere</div>
+          <p class="desc">Approfitta dell'offerta Last Minute: sconto del 5% sulle tariffe non rimborsabili per chi prenota direttamente dal sito.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="#book-lastminute" onclick="alert('Aprire la piattaforma di prenotazione o form di contatto.')" >Prenota ora</a>
+            <a class="btn btn-ghost" href="#info-lastminute">Dettagli</a>
+          </div>
         </div>
-      </section>
+      </article>
+
+      <!-- Card 2: 2 notti -->
+      <article class="card">
+        <img src="img/2notti.jpg" alt="Offerta 2 notti - Santa Lucia" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Offerta 2/3 notti</span>
+          <h3>Soggiorno 2 notti — sconto 5%</h3>
+          <div class="meta">Valida per soggiorni di 2 o 3 notti • Tariffa non rimborsabile • Tutte le camere</div>
+          <p class="desc">Soggiorna più notti e beneficia dello sconto del 5% sulle tariffe non rimborsabili, riservato alle prenotazioni dal sito.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="#book-2notti" onclick="alert('Aprire la piattaforma di prenotazione o form di contatto.')" >Prenota</a>
+            <a class="btn btn-ghost" href="#info-2notti">Dettagli</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: SPA in Camera Day Use -->
+      <article class="card">
+        <img src="img/spa_dayuse.jpg" alt="SPA in camera Day Use - Suite Sole" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Day Use</span>
+          <h3>SPA in CAMERA — DAY USE</h3>
+          <div class="meta">Check in dalle 12 — Check out entro le 21 • Solo Suite Sole • Non disponibile ven/sab</div>
+          <p class="desc">Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora, + check-in dalle 12 con check-out entro le 21.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/jmWEbQ7ayAnpZ2e8?lang=it" target="_blank" rel="noopener">Vedi offerta</a>
+            <a class="btn btn-ghost" href="#info-spa">Dettagli</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: Pranzo & SPA with Day Use -->
+      <article class="card">
+        <img src="img/pranzo_spa.jpg" alt="Pranzo & SPA con camera in Day Use" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Day Use + Pranzo</span>
+          <h3>PRANZO & SPA — Day Use</h3>
+          <div class="meta">Check in dalle 12 — Check out entro le 21 • Suite Sole • Pranzo 2 portate</div>
+          <p class="desc">1 ora di accesso Garden SPA + pranzo alla carta 2 portate. Disponibile tutti i giorni eccetto venerdì e sabato.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/P9jerM5a3yMvaJdq?lang=it" target="_blank" rel="noopener">Vedi offerta</a>
+            <a class="btn btn-ghost" href="#info-pranzo">Dettagli</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5: Fuga Romantica -->
+      <article class="card">
+        <img src="img/fuga_romantica.jpg" alt="Fuga Romantica - Santa Lucia" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Con Pernotto</span>
+          <h3>Fuga Romantica</h3>
+          <div class="meta">Check-in dalle 14:30 • Cena degustazione 5 portate • Check-out ore 11:00</div>
+          <p class="desc">Postazioni bordo piscina, cena degustazione "Orto e Territorio" e colazione servita al tavolo. Un pacchetto pensato per le coppie.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/bxWV5G1XD6QALdJw?lang=it" target="_blank" rel="noopener">Prenota Fuga Romantica</a>
+            <a class="btn btn-ghost" href="#info-fuga">Dettagli</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6: Fuga con cena al braciere -->
+      <article class="card">
+        <img src="img/fuga_braciere.jpg" alt="Fuga Romantica con cena al braciere" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Speciale</span>
+          <h3>Fuga Romantica — Cena al Braciere</h3>
+          <div class="meta">Check-in dalle 14:30 • Cena al braciere • Check-out ore 11:00</div>
+          <p class="desc">Cena intima al braciere con menù degustazione 5 portate, colazione inclusa e check-out ore 11:00. Perfetto per serate speciali.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="#contact" onclick="alert('Contattaci per prenotare questa esperienza speciale.')" >Richiedi info</a>
+            <a class="btn btn-ghost" href="#info-braciere">Dettagli</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 7: Fuga Benessere & Relax -->
+      <article class="card">
+        <img src="img/fuga_benessere.jpg" alt="Fuga Benessere & Relax - Santa Lucia" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Benessere</span>
+          <h3>Fuga Benessere & Relax</h3>
+          <div class="meta">Check-in dalle 14:30 • 1 ora Garden SPA • Cena degustazione</div>
+          <p class="desc">Un giorno per rigenerarsi: SPA, cena degustazione e colazione servita al tavolo. Check-out ore 11:00.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="#book-benessere" onclick="alert('Aprire la piattaforma di prenotazione o form di contatto.')" >Prenota</a>
+            <a class="btn btn-ghost" href="#info-benessere">Dettagli</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 8: Relax Weekend -->
+      <article class="card">
+        <img src="img/relax_weekend.jpg" alt="Relax Weekend & SPA - Santa Lucia" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Weekend</span>
+          <h3>Relax Weekend — 26 ore</h3>
+          <div class="meta">Disponibile dal 9 novembre • Check-in sabato 14:30 • Check-out domenica 16:00</div>
+          <p class="desc">Cena degustazione 5 portate, accesso SPA, colazione e check-out prolungato per un weekend fuori dal mondo a due passi dal mare.</p>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="#book-weekend" onclick="alert('Aprire la piattaforma di prenotazione o form di contatto.')" >Prenota Weekend</a>
+            <a class="btn btn-ghost" href="#info-weekend">Dettagli</a>
+          </div>
+        </div>
+      </article>
 
     </main>
 
     <footer>
-      <div>Per prenotazioni dirette: aggiungi questo link in bio su Instagram (Impostazioni → Modifica profilo → Sito web) o condividilo nelle stories.</div>
-      <div style="margin-top:8px">Contatti: +39 000 000000 • info@santalucia.example</div>
+      <div>© Santa Lucia — Tutti i diritti riservati</div>
+      <div style="margin-top:8px">Per prenotazioni dirette inserisci questo link in bio: <strong>https://TUO_USERNAME.github.io/santalucia-offerte/</strong></div>
     </footer>
   </div>
+
+  <!-- Small script to replace the visible example link with the actual repo URL (optional) -->
+  <script>
+    (function(){
+      // Se vuoi cambiare l'URL mostrato nella sezione "Link rapido", modifica qui:
+      var publicUrl = "https://TUO_USERNAME.github.io/santalucia-offerte/";
+      var el = document.getElementById('myLink');
+      if(el) el.textContent = publicUrl;
+    })();
+  </script>
 </body>
 </html>
