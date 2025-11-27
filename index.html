@@ -1,459 +1,975 @@
 <!doctype html>  
+
 <html lang="it">  
+
 <head>  
+
   <meta charset="utf-8" />  
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />  
+
   <title>Santa Lucia — Offerte & Pacchetti</title>  
+
   <meta name="description" content="Offerte e pacchetti Santa Lucia Maccarese — prenota direttamente dal sito.">  
+
   
-  <!-- Fonts -->  
+
+    
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">  
+
   
+
   <style>  
+
     :root {  
+
       --bg: #fefdfc;  
+
       --card: #ffffff;  
+
       --muted: #555555;  
+
       --accent: #00756e;  
+
       --accent-dark: #004d46;  
+
       --radius: 12px;  
+
       --shadow: 0 6px 18px rgba(0,0,0,0.06);  
+
       --maxw: 1100px;  
+
       --gradient-bg: linear-gradient(180deg, #fefdfc, #f6f7f8);  
+
     }  
+
   
+
     * { box-sizing: border-box; }  
+
     body {  
+
       margin: 0;  
+
       font-family: 'Montserrat', sans-serif;  
+
       background: var(--gradient-bg);  
+
       color: #111;  
+
       display: flex;  
+
       justify-content: center;  
+
       padding: 28px 16px;  
+
     }  
+
     .wrap { width: 100%; max-width: var(--maxw); }  
+
   
+
     header { text-align: center; margin-bottom: 28px; }  
+
     .logo { width: 160px; height: auto; margin: 0 auto 10px; display: block; }  
+
   
+
     h1 {  
+
       font-family: 'Playfair Display', serif;  
+
       color: var(--accent-dark);  
+
       font-size: 30px;  
+
       margin: 10px 0 6px;  
+
       letter-spacing: 0.5px;  
+
     }  
+
     p.lead {  
+
       color: var(--muted);  
+
       font-size: 16px;  
+
       line-height: 1.6;  
+
       max-width: 700px;  
+
       margin: 0 auto 16px;  
+
     }  
+
     .intro-box {  
+
       background: var(--card);  
+
       border-radius: var(--radius);  
+
       box-shadow: var(--shadow);  
+
       padding: 24px 28px;  
+
       margin: 0 auto 30px;  
+
       max-width: 780px;  
+
     }  
+
   
+
     main.grid {  
+
       display: grid;  
+
       gap: 22px;  
+
       grid-template-columns: 1fr;  
+
     }  
+
     @media(min-width:760px){ main.grid { grid-template-columns: repeat(2,1fr); } }  
+
   
+
     .card {  
+
       background: var(--card);  
+
       border-radius: var(--radius);  
+
       overflow: hidden;  
+
       box-shadow: var(--shadow);  
+
       display: flex;  
+
       flex-direction: column;  
+
       transition: transform .22s ease;  
+
     }  
+
     .card:hover { transform: translateY(-6px); }  
+
     .card .media { width: 100%; height: 220px; object-fit: cover; display: block; border-bottom: 1px solid #eee; }  
+
     .card-body { padding: 16px 18px; display: flex; flex-direction: column; flex: 1; }  
+
   
+
     .tag {  
+
       display: inline-block;  
+
       background: rgba(0,117,110,0.12);  
+
       color: var(--accent-dark);  
+
       padding: 6px 12px;  
+
       border-radius: 999px;  
+
       font-weight: 600;  
+
       font-size: 13px;  
+
       margin-bottom: 8px;  
+
     }  
+
   
+
     .alert-weekend {  
+
       background: #f8d7da;  
+
       color: #842029;  
+
       padding: 6px 10px;  
+
       border-radius: 8px;  
+
       font-size: 13px;  
+
       margin-bottom: 8px;  
+
       font-weight: 600;  
+
       text-align: center;  
+
     }  
+
   
+
     .card h3 {  
+
       font-family: 'Playfair Display', serif;  
+
       margin: 6px 0;  
+
       font-size: 18px;  
+
       color: var(--accent-dark);  
+
     }  
+
     .meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }  
+
     .desc { flex: 1; color: #222; font-size: 14px; line-height: 1.5; margin-bottom: 12px; }  
+
     .card-footer { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }  
+
   
+
     .btn {  
+
       display: inline-flex; align-items: center; justify-content: center;  
+
       padding: 9px 14px; border-radius: 10px; text-decoration: none;  
+
       font-weight: 700; font-size: 14px; border: 0; cursor: pointer;  
+
     }  
+
     .btn-primary { background: var(--accent); color: #fff; }  
+
     .btn-primary:hover { background: var(--accent-dark); }  
+
     .btn-ghost { background: transparent; border: 1px solid #e6e6e6; color: var(--accent-dark); }  
+
   
+
     footer { margin-top: 40px; text-align: center; color: var(--muted); font-size: 14px; }  
+
   
+
     /* modal */  
+
     .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 120; }  
+
     .modal.show { display: flex; }  
+
     .modal-card { background: #fff; border-radius: 12px; max-width: 720px; width: 100%; padding: 24px; box-shadow: var(--shadow); position: relative; }  
+
     .modal-card h4 { margin: 0 0 8px; font-family: 'Playfair Display', serif; }  
+
     .modal-close { position: absolute; right: 12px; top: 10px; border: none; background: none; font-size: 22px; cursor: pointer; color: var(--accent-dark); }  
+
   
+
     /* contact row */  
+
     .contact-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 28px; }  
+
     .contact-link {  
+
       background: #fff;  
+
       border: 1px solid #eee;  
+
       padding: 10px 16px;  
+
       border-radius: 10px;  
+
       text-decoration: none;  
+
       color: var(--accent-dark);  
+
       font-weight: 700;  
+
       transition: all .2s ease;  
+
     }  
+
     .contact-link:hover {  
+
       transform: translateY(-3px);  
+
       box-shadow: var(--shadow);  
+
     }  
+
   
+
     @media(max-width:420px){ .card .media { height: 160px; } }  
+
   </style>  
+
 </head>  
+
 <body>  
+
   <div class="wrap">  
+
     <header>  
+
       <a href="https://www.santaluciamaccarese.it" target="_blank" rel="noopener">  
+
         <img src="img/logo.png" alt="Santa Lucia" class="logo" onerror="this.style.display='none'">  
+
       </a>  
+
       <div class="intro-box">  
+
         <h1>Offerte & Pacchetti</h1>  
+
         <p class="lead">  
+
           Scopri le promozioni e i pacchetti esclusivi del <strong>Santa Lucia Maccarese</strong>.<br>  
+
           Prenota direttamente per ottenere le migliori condizioni e vivere un’esperienza di charme, fuori dal mondo a due passi dal mare.  
+
         </p>  
+
       </div>  
+
     </header>  
+
   
+
     <main class="grid" id="offers">  
+
   
-      <!-- 1 Last Minute -->  
+
+        
+
       <article class="card">  
-        <img class="media" src="img/lastminute.jpg" alt="Last Minute Santa Lucia">  
+
+        <img class="media" src="img/lastminute.jpg" alt="Last Minute 29 Novembre">  
+
         <div class="card-body">  
+
           <span class="tag">Last Minute</span>  
-          <h3>Last Minute — sconto 5%</h3>  
-          <div class="meta">Prenota entro 72 ore dal check-in · Tariffa non rimborsabile</div>  
-          <p class="desc">Sconto 5% sulla tariffa non rimborsabile per prenotazioni dirette.</p>  
+
+          <div class="alert-weekend">⚠️ Disponibile solo il weekend del 29/30 Novembre</div>  
+
+          <h3>Last Minute 29 Nov — 26 Ore di Relax</h3>  
+
+          <div class="meta">Una Notte con Cena Degustazione e Late Check-Out</div>  
+
+          <p class="desc">Check-in dalle 14:30 del sabato; Cena degustazione 5 portate, Entrée e piccola pasticceria; Check-out entro le ore 16:00 della domenica.</p>  
+
           <div class="card-footer">  
-            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51464)" target="_blank" rel="noopener">Prenota</a>  
-            <button class="btn btn-ghost" onclick="openModal('lastminute')">Dettagli</button>  
+
+            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/yab24GDLqoGIEJL0?iang=it" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('last_minute_29nov')">Dettagli</button>  
+
           </div>  
+
         </div>  
-      </article>  
-  
-      <!-- 2 Due Notti -->  
-      <article class="card">  
-        <img class="media" src="img/2notti.jpg" alt="Offerta 2 Notti">  
-        <div class="card-body">  
-          <span class="tag">2/3 Notti</span>  
-          <h3>Soggiorno 2 notti — sconto 5%</h3>  
-          <div class="meta">Valida per soggiorni di 2 o 3 notti · Tariffa non rimborsabile</div>  
-          <p class="desc">Soggiorna 2 o 3 notti e ottieni il 5% di sconto sulla tariffa non rimborsabile.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51565)" target="_blank" rel="noopener">Prenota</a>  
-            <button class="btn btn-ghost" onclick="openModal('2notti')">Dettagli</button>  
-          </div>  
-        </div>  
-      </article>  
-  
-      <!-- 3 SPA Day Use (MODIFICATO) -->  
-      <article class="card">  
-        <img class="media" src="img/spa_dayuse.jpg" alt="SPA Day Use">  
-        <div class="card-body">  
-          <span class="tag">Day Use</span>  
-          <h3>Garden SPA con Camera Day Use</h3>  
-          <div class="meta"></div>  
-          <p class="desc">Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora e utilizzo della camera.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="mailto:santaluciamaccarese@gmail.com?subject=Richiesta%20informazioni%20Garden%20SPA%20Day%20Use">Invia Email</a>  
-            <button class="btn btn-ghost" onclick="openModal('spa_dayuse')">Dettagli</button>  
-          </div>  
-        </div>  
-      </article>  
-  
-      <!-- 4 Pranzo & SPA (MODIFICATO) -->  
-      <article class="card">  
-        <img class="media" src="img/pranzo_spa.jpg" alt="Pranzo & SPA">  
-        <div class="card-body">  
-          <span class="tag">Day Use</span>  
-          <h3>Pranzo & Garden SPA con Camera in Day Use</h3>  
-          <div class="meta"></div>  
-          <p class="desc">Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora e utilizzo della camera, pranzo alla carta 2 portate.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="mailto:santaluciamaccarese@gmail.com?subject=Richiesta%20informazioni%20Pranzo%20e%20Garden%20SPA%20Day%20Use">Invia Email</a>  
-            <button class="btn btn-ghost" onclick="openModal('pranzo_spa')">Dettagli</button>  
-          </div>  
-        </div>  
-      </article>  
-  
-      <!-- 5 Fuga Romantica -->  
-      <article class="card">  
-        <img class="media" src="img/fuga_romantica.jpg" alt="Fuga Romantica">  
-        <div class="card-body">  
-          <span class="tag">Una Notte</span>  
-          <h3>Fuga Romantica</h3>  
-          <div class="meta">Una Notte con Cena Degustazione e Colazione</div>  
-          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione 5 portate, Colazione, Check-out entro le ore 11:00.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39076)" target="_blank" rel="noopener">Prenota</a>  
-            <button class="btn btn-ghost" onclick="openModal('fuga_romantica')">Dettagli</button>  
-          </div>  
-        </div>  
-      </article> 
-  
-      <!-- 6 Fuga Romantica con Cena al Braciere -->  
-      <article class="card">  
-        <img class="media" src="img/fuga_braciere.jpg" alt="Fuga Romantica Cena al Braciere">  
-        <div class="card-body">  
-          <span class="tag">Una Notte</span>  
-          <h3>Fuga Romantica con Cena al Braciere</h3>  
-          <div class="meta">Una Notte con Cena Degustazione al Braciere e Colazione</div>  
-          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione al braciere di 5 portate, Colazione, Check-out entro le ore 11:00.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39086)" target="_blank" rel="noopener">Prenota</a>  
-            <button class="btn btn-ghost" onclick="openModal('fuga_braciere')">Dettagli</button>  
-          </div>  
-        </div>  
-      </article>  
-  
-      <!-- 7 Fuga Benessere & Relax -->  
-      <article class="card">  
-        <img class="media" src="img/fuga_benessere.jpg" alt="Fuga Benessere & Relax">  
-        <div class="card-body">  
-          <span class="tag">Una Notte</span>  
-          <h3>Fuga Benessere & Relax</h3>  
-          <div class="meta">Una Notte con Cena Degustazione, Colazione e Garden SPA.</div>  
-          <p class="desc">- check-in a partire dalle 14:30; Accesso Garden SPA, Cena degustazione di 5 portate, Colazione; Check-out entro le ore 11:00.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51498)" target="_blank" rel="noopener">Prenota</a>  
-            <button class="btn btn-ghost" onclick="openModal('fuga_benessere')">Dettagli</button>  
-          </div>  
-        </div>  
-      </article>  
-  
-      <!-- 8 Relax Weekend -->  
-      <article class="card">  
-        <img class="media" src="img/relax_weekend.jpg" alt="Relax Weekend">  
-        <div class="card-body">  
-          <span class="tag">Una Notte</span>  
-          <div class="alert-weekend">⚠️ Disponibile solo la domenica a partire dal 2 novembre</div>  
-          <h3>Relax Weekend - 26 Ore Fuori dal Mondo a Due Passi dal Mare</h3>  
-          <div class="meta">Una Notte con Cena Degustazione, Colazione e Late Check-Out</div>  
-          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione 5 portate; Colazione; Late check-out entro le ore 16:00.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/3Ye8WMJbPjME1a5R?lang=it" target="_blank" rel="noopener">Prenota</a>  
-            <button class="btn btn-ghost" onclick="openModal('relax_weekend')">Dettagli</button>  
-          </div>  
-        </div>  
-      </article>  
-      
-  <!-- 9 Relax & SPA Weekend -->  
-      <article class="card">  
-        <img class="media" src="img/weekend_spa.jpg" alt="Relax & SPA Weekend">  
-        <div class="card-body">  
-          <span class="tag">Una Notte</span>  
-          <div class="alert-weekend">⚠️ Disponibile solo la domenica a partire dal 2 novembre</div>  
-          <h3>Relax & Garden SPA Weekend - 26 Ore Fuori dal Mondo a Due Passi dal Mare</h3>  
-          <div class="meta">Una Notte con Cena Degustazione, Accesso Garden SPA, Colazione e Late Check-Out</div>  
-          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione 5 portate; Accesso Garden SPA; Colazione; Late check-out entro le ore 16:00.</p>  
-          <div class="card-footer">  
-            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/v2r6DGO64gQgpmYj?lang=it" target="_blank" rel="noopener">Prenota</a>  
-            <button class="btn btn-ghost" onclick="openModal('relax_weekend_spa')">Dettagli</button>  
-          </div>  
-        </div>  
+
       </article>  
 
-       <!-- 10 Esperienze Giornaliere -->    
-      <article class="card">    
-        <img class="media" src="img/esperienze.jpg" alt="Esperienze Giornaliere Santa Lucia">    
-        <div class="card-body">    
-          <span class="tag">Giornaliere</span>    
-          <h3>Esperienze Giornaliere senza Pernotto</h3>    
-          <div class="meta">Proposte giornaliere per vivere momenti di relax e gusto</div>    
-          <p class="desc">Scopri le esperienze giornaliere firmate Santa Lucia: benessere, gusto e relax anche senza pernottare.</p>    
-          <div class="card-footer">    
-            <a class="btn btn-primary" href="https://www.santaluciamaccarese.it" target="_blank" rel="noopener">Scopri di più</a>    
-          </div>    
-        </div>    
-      </article>    
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/lastminute.jpg" alt="Last Minute Santa Lucia">  
+
+        <div class="card-body">  
+
+          <span class="tag">Last Minute</span>  
+
+          <h3>Last Minute — sconto 5%</h3>  
+
+          <div class="meta">Prenota entro 72 ore dal check-in · Tariffa non rimborsabile</div>  
+
+          <p class="desc">Sconto 5% sulla tariffa non rimborsabile per prenotazioni dirette.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51464)" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('lastminute')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/2notti.jpg" alt="Offerta 2 Notti">  
+
+        <div class="card-body">  
+
+          <span class="tag">2/3 Notti</span>  
+
+          <h3>Soggiorno 2 notti — sconto 5%</h3>  
+
+          <div class="meta">Valida per soggiorni di 2 o 3 notti · Tariffa non rimborsabile</div>  
+
+          <p class="desc">Soggiorna 2 o 3 notti e ottieni il 5% di sconto sulla tariffa non rimborsabile.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51565)" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('2notti')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/spa_dayuse.jpg" alt="SPA Day Use">  
+
+        <div class="card-body">  
+
+          <span class="tag">Day Use</span>  
+
+          <h3>Garden SPA con Camera Day Use</h3>  
+
+          <div class="meta"></div>  
+
+          <p class="desc">Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora e utilizzo della camera.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="mailto:santaluciamaccarese@gmail.com?subject=Richiesta%20informazioni%20Garden%20SPA%20Day%20Use">Invia Email</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('spa_dayuse')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/pranzo_spa.jpg" alt="Pranzo & SPA">  
+
+        <div class="card-body">  
+
+          <span class="tag">Day Use</span>  
+
+          <h3>Pranzo & Garden SPA con Camera in Day Use</h3>  
+
+          <div class="meta"></div>  
+
+          <p class="desc">Accesso esclusivo alla Garden SPA (tinozza finlandese, sauna, bagno turco) per 1 ora e utilizzo della camera, pranzo alla carta 2 portate.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="mailto:santaluciamaccarese@gmail.com?subject=Richiesta%20informazioni%20Pranzo%20e%20Garden%20SPA%20Day%20Use">Invia Email</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('pranzo_spa')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/fuga_romantica.jpg" alt="Fuga Romantica">  
+
+        <div class="card-body">  
+
+          <span class="tag">Una Notte</span>  
+
+          <h3>Fuga Romantica</h3>  
+
+          <div class="meta">Una Notte con Cena Degustazione e Colazione</div>  
+
+          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione 5 portate, Colazione, Check-out entro le ore 11:00.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39076)" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('fuga_romantica')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article> 
+
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/fuga_braciere.jpg" alt="Fuga Romantica Cena al Braciere">  
+
+        <div class="card-body">  
+
+          <span class="tag">Una Notte</span>  
+
+          <h3>Fuga Romantica con Cena al Braciere</h3>  
+
+          <div class="meta">Una Notte con Cena Degustazione al Braciere e Colazione</div>  
+
+          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione al braciere di 5 portate, Colazione, Check-out entro le ore 11:00.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/39086)" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('fuga_braciere')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/fuga_benessere.jpg" alt="Fuga Benessere & Relax">  
+
+        <div class="card-body">  
+
+          <span class="tag">Una Notte</span>  
+
+          <h3>Fuga Benessere & Relax</h3>  
+
+          <div class="meta">Una Notte con Cena Degustazione, Colazione e Garden SPA.</div>  
+
+          <p class="desc">- check-in a partire dalle 14:30; Accesso Garden SPA, Cena degustazione di 5 portate, Colazione; Check-out entro le ore 11:00.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="https://santaluciamaccarese.beddy.io/#/(beddy:offer/51498)" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('fuga_benessere')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
+  
+
+        
+
+      <article class="card">  
+
+        <img class="media" src="img/relax_weekend.jpg" alt="Relax Weekend">  
+
+        <div class="card-body">  
+
+          <span class="tag">Una Notte</span>  
+
+          <div class="alert-weekend">⚠️ Disponibile solo la domenica a partire dal 2 novembre</div>  
+
+          <h3>Relax Weekend - 26 Ore Fuori dal Mondo a Due Passi dal Mare</h3>  
+
+          <div class="meta">Una Notte con Cena Degustazione, Colazione e Late Check-Out</div>  
+
+          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione 5 portate; Colazione; Late check-out entro le ore 16:00.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/3Ye8WMJbPjME1a5R?lang=it" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('relax_weekend')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
       
+
+    
+
+      <article class="card">  
+
+        <img class="media" src="img/weekend_spa.jpg" alt="Relax & SPA Weekend">  
+
+        <div class="card-body">  
+
+          <span class="tag">Una Notte</span>  
+
+          <div class="alert-weekend">⚠️ Disponibile solo la domenica a partire dal 2 novembre</div>  
+
+          <h3>Relax & Garden SPA Weekend - 26 Ore Fuori dal Mondo a Due Passi dal Mare</h3>  
+
+          <div class="meta">Una Notte con Cena Degustazione, Accesso Garden SPA, Colazione e Late Check-Out</div>  
+
+          <p class="desc">Check-in a partire dalle 14:30; Cena degustazione 5 portate; Accesso Garden SPA; Colazione; Late check-out entro le ore 16:00.</p>  
+
+          <div class="card-footer">  
+
+            <a class="btn btn-primary" href="https://share.beddy.io/share/rateplan/v2r6DGO64gQgpmYj?lang=it" target="_blank" rel="noopener">Prenota</a>  
+
+            <button class="btn btn-ghost" onclick="openModal('relax_weekend_spa')">Dettagli</button>  
+
+          </div>  
+
+        </div>  
+
+      </article>  
+
+
+
+           
+
+      <article class="card">    
+
+        <img class="media" src="img/esperienze.jpg" alt="Esperienze Giornaliere Santa Lucia">    
+
+        <div class="card-body">    
+
+          <span class="tag">Giornaliere</span>    
+
+          <h3>Esperienze Giornaliere senza Pernotto</h3>    
+
+          <div class="meta">Proposte giornaliere per vivere momenti di relax e gusto</div>    
+
+          <p class="desc">Scopri le esperienze giornaliere firmate Santa Lucia: benessere, gusto e relax anche senza pernottare.</p>    
+
+          <div class="card-footer">    
+
+            <a class="btn btn-primary" href="https://www.santaluciamaccarese.it" target="_blank" rel="noopener">Scopri di più</a>    
+
+          </div>    
+
+        </div>    
+
+      </article>    
+
+      
+
     </main>  
+
   
+
     <div class="contact-row">  
+
       <a class="contact-link" href="tel:+39068540230">📞 06 8540230</a>  
+
       <a class="contact-link" href="mailto:santaluciamaccarese@gmail.com">✉️ santaluciamaccarese@gmail.com</a>  
+
       <a class="contact-link" href="https://www.santaluciamaccarese.it" target="_blank" rel="noopener">🌐 Visita il sito</a>  
+
     </div>  
+
   
+
     <footer>  
+
       <div>© Santa Lucia Maccarese — Via della Luna, Fregene (RM)</div>  
+
     </footer>  
+
   </div>  
+
   
-  <!-- Modali -->  
+
+    
+
   <div id="modal" class="modal" onclick="if(event.target===this) closeModal()">  
+
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">  
+
       <button class="modal-close" onclick="closeModal()" aria-label="Chiudi">×</button>  
+
       <div id="modal-body"></div>  
+
     </div>  
+
   </div>  
+
   
+
 <script>
+
   const DETAILS = {
+
+    // NUOVI DETTAGLI
+
+    last_minute_29nov:{
+
+      title:'Last Minute 29 Novembre — 26 Ore di Relax',
+
+      text:`
+
+        <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
+          <li>Check-in dalle 14:30 del Sabato.</li>
+
+          <li>Cena degustazione 5 portate, con entrée di benvenuto e piccola pasticceria finale.</li>
+
+          <li>Colazione dolce o salata servita al tavolo.</li>
+
+          <li>Late Check-out entro le ore 16:00 della Domenica.</li>
+
+        </ul>
+
+        <p style="margin-top:8px;">Offerta speciale valida solo per la notte del 29 Novembre.</p>`
+
+    },
+
+    // DETTAGLI ESISTENTI
+
     lastminute:{
+
       title:'Last Minute — Sconto 5%',
+
       text:`
+
         <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
           <li>Valida per soggiorni prenotati entro 72 ore dal check-in.</li>
+
           <li>Sconto 5% sulla tariffa non rimborsabile.</li>
+
         </ul>`
+
     },
+
     '2notti':{
+
       title:'Offerta 2/3 Notti',
+
       text:`
+
         <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
           <li>Valida per soggiorni di 2 o 3 notti.</li>
+
           <li>Sconto 5% sulla tariffa non rimborsabile.</li>
+
         </ul>`
+
     },
+
     spa_dayuse:{
+
       title:'Garden SPA con Camera Day Use',
+
       text:`
+
       <p>Una pausa per rigenerarsi.</p>
+
       <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
         <li>Arrivo in struttura a partire dalle 11 con colazione di benvenuto;</li>
+
         <li>Check in a partire dalle 12 e check out entro le 21;</li>
+
         <li>Accesso esclusivo alla nostra Garden SPA, con tinozza finlandese, sauna e bagno turco, della durata di un’ora.</li>
+
       </ul>
+
       <p style="margin-top:8px;">E' possibile, su richiesta e in funzione delle disponibilità, aggiungere al pacchetto un massaggio di 50 minuti, singolo o di coppia, al costo di 80 euro a persona.</p>`
+
     },
+
     pranzo_spa:{
+
       title:'Pranzo & Garden SPA con Camera in Day Use',
+
       text:`
+
       <p>Per un break di gustoso relax.</p>
+
       <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
         <li>Check in a partire dalle 12 e check out entro le 21;</li>
+
         <li>Accesso esclusivo alla nostra Garden SPA, con tinozza finlandese, sauna e bagno turco, della durata di un’ora;</li>
+
         <li>Pranzo alla carta 2 portate (antipasto e primo oppure antipasto e secondo).</li>
+
       </ul>
+
     `,
+
     },
+
     fuga_romantica:{
+
       title:'Fuga Romantica',
+
       text:`
+
         <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
           <li>Check-in dalle 14:30.</li>
+
           <li>Cena degustazione “Orto e Territorio” 5 portate.</li>
+
           <li>Entrée di benvenuto e piccola pasticceria finale.</li>
+
           <li>Colazione dolce o salata servita al tavolo.</li>
+
           <li>Check-out entro le ore 11:00.</li>
+
         </ul>`
+
     },
+
     fuga_braciere:{
+
       title:'Fuga Romantica con Cena al Braciere',
+
       text:`
+
         <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
           <li>Check-in dalle 14:30.</li>
+
           <li>Cena degustazione “Orto e Territorio” 5 portate al Braciere.</li>
+
           <li>Entrée di benvenuto e piccola pasticceria finale.</li>
+
           <li>Colazione dolce o salata servita al tavolo.</li>
+
           <li>Check-out entro le ore 11:00.</li>
+
         </ul>`
+
     },
+
     fuga_benessere:{
+
       title:'Fuga Benessere & Relax',
+
       text:`
+
         <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
           <li>Check-in dalle 14:30.</li>
+
           <li>Accesso alla Garden SPA.</li>
+
           <li>Cena degustazione “Orto e Territorio” 5 portate al Braciere.</li>
+
           <li>Entrée di benvenuto e piccola pasticceria finale.</li>
+
           <li>Colazione dolce o salata servita al tavolo.</li>
+
           <li>Check-out entro le ore 11:00.</li>
+
         </ul>`
+
     },
+
     relax_weekend_spa:{
+
       title:'Relax Weekend — 26 Ore',
+
       text:`
+
         <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
           <li>Check-in dalle 14:30.</li>
+
           <li>Acceso Garden SPA.</li>
+
           <li>Cena degustazione “Orto e Territorio” 5 portate.</li>
+
           <li>Entrée di benvenuto e piccola pasticceria finale.</li>
+
           <li>Colazione dolce o salata servita al tavolo.</li>
+
           <li>Late Check-out entro le ore 16:00.</li>
+
         </ul>
+
         <p style="margin-top:8px;">E' possibile, su richiesta e in funzione delle disponibilità, aggiungere al pacchetto un massaggio di 50 minuti, singolo o di coppia, al costo di 80 euro a persona.</p>
+
         <p style="margin-top:4px;">Al momento della prenotazione indicare come data del check out il giorno successivo anche se si tratta di day use.</p>`
+
     },
+
     relax_weekend:{
+
       title:'Relax Weekend — 26 Ore',
+
       text:`
+
         <ul style="padding-left:18px; line-height:1.6; margin:0;">
+
           <li>Check-in dalle 14:30.</li>
+
           <li>Cena degustazione “Orto e Territorio” 5 portate.</li>
+
           <li>Entrée di benvenuto e piccola pasticceria finale.</li>
+
           <li>Colazione dolce o salata servita al tavolo.</li>
+
           <li>Late Check-out entro le ore 16:00.</li>
+
         </ul>
+
         <p style="margin-top:8px;">È possibile, su richiesta e in funzione delle disponibilità, aggiungere al pacchetto un massaggio di 50 minuti, singolo o di coppia, al costo di 80 euro a persona.</p>
+
         <p style="margin-top:4px;">Al momento della prenotazione indicare come data del check out il giorno successivo anche se si tratta di day use.</p>`
+
     }
+
   };
 
+
+
   function openModal(key){
+
     const data = DETAILS[key];
+
     if(!data) return;
+
     const body=document.getElementById('modal-body');
+
     body.innerHTML='<h4 id="modal-title">'+data.title+'</h4>'+data.text+
+
       '<div style="margin-top:12px;text-align:right"><button class="btn btn-primary" style="padding:8px 12px;border-radius:8px" onclick="closeModal()">Chiudi</button></div>';
+
     document.getElementById('modal').classList.add('show');
+
   }
+
   function closeModal(){
+
     document.getElementById('modal').classList.remove('show');
+
     document.getElementById('modal-body').innerHTML='';
+
   }
+
 </script>
+
 </body>  
+
 </html>
